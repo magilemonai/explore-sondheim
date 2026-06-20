@@ -1,0 +1,10 @@
+# Copyrighted scores — never publish
+*.pdf
+/score/
+
+# macOS
+.DS_Store
+
+# Editors / logs
+.vscode/
+*.log

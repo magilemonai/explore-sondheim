@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sunday in the Park with George — Explore Sondheim</title>
+<meta name="description" content="An interactive study of Stephen Sondheim's Sunday in the Park with George, through a compositional and lyrical lens." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/base.css" />
+<link rel="stylesheet" href="../css/sunday.css" />
+</head>
+<body data-show="sunday">
+
+<!-- ===================== TOP BAR ===================== -->
+<header class="topbar" id="topbar">
+  <a class="brand" href="../index.html"><span class="dot"></span> Explore Sondheim</a>
+  <button class="sound-toggle" id="sound-toggle" aria-pressed="false" aria-label="Toggle sound">
+    <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span class="st-label">Sound off</span>
+  </button>
+</header>
+
+<main>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="hero">
+  <div class="hero-inner wrap">
+    <p class="eyebrow reveal in">Flagship · 1984 · Pulitzer Prize for Drama</p>
+    <h1 class="reveal in d1">Sunday in the Park with George</h1>
+    <p class="lead reveal in d2" style="max-width:54ch">
+      A musical about making a painting — and a score that paints. Press begin: thousands of points of color
+      find their places while the music assembles out of dots, exactly as Seurat did.
+    </p>
+
+    <div class="easel reveal in d2">
+      <canvas id="dotfield" aria-hidden="true"></canvas>
+      <div class="easel-overlay" id="easel-overlay">
+        <button class="btn" id="assemble-btn">▶ Begin — assemble the painting</button>
+        <span class="hero-hint" id="hero-hint">sound + motion ahead · headphones recommended</span>
+      </div>
+      <p class="canvas-credit" id="canvas-credit">
+        After Georges Seurat, <em>A Sunday on La Grande Jatte — 1884</em> (1884–86), The Art Institute of Chicago — recreated here in points of light.
+      </p>
+    </div>
+
+    <div class="hero-cta reveal in d3">
+      <button class="btn ghost" id="scatter-btn" hidden>↺ Scatter &amp; rebuild</button>
+      <span class="muted" style="font-size:0.88rem">Then scroll to take the painting — and the score — apart.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TWO LENSES ===================== -->
+<section class="wrap">
+  <p class="section-num reveal">01 — How to look (and listen)</p>
+  <div class="lenses" style="margin-top:30px">
+    <div class="lens music reveal">
+      <span class="tag">The compositional lens</span>
+      <h3>The score is pointillist</h3>
+      <p class="muted" id="lens-music"></p>
+    </div>
+    <div class="lens lyric reveal d1">
+      <span class="tag">The lyrical lens</span>
+      <h3>So is the writing</h3>
+      <p class="muted" id="lens-lyric"></p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ===================== POINTILLISM IN SOUND ===================== -->
+<section class="wrap lab" id="lab-pointillism">
+  <div class="lab-head reveal">
+    <p class="section-num">02 — Dots become a line</p>
+    <h2>Pointillism, in sound</h2>
+    <p class="muted">
+      Up close, Seurat is dots; step back and they fuse into a figure. Sondheim does the same with rhythm:
+      a rapid, <em class="term">staccato</em> accompaniment of separate notes that the ear blends into a shape.
+      Slide from detached to connected and hear dabs turn into melody. Listen, too, for the figure's
+      third flickering between minor and major (D♭ and D♮) — the same color trick waiting in the next room.
+    </p>
+    <blockquote class="cited reveal d2">
+      “Sondheim … created a sense of pointillism through rhythm, composing a staccato accompaniment for Georges as he paints.”
+      <cite>— The Art Institute of Chicago, which owns the painting</cite>
+    </blockquote>
+  </div>
+  <div class="lab-stage dotlab-stage reveal d1">
+    <canvas id="dotlab-canvas" aria-hidden="true"></canvas>
+    <div class="dotlab-readout" id="dotlab-readout">staccato · separate dabs</div>
+  </div>
+  <div class="controls reveal d1">
+    <div class="control">
+      <label>Articulation <span class="val" id="artic-val">staccato</span></label>
+      <input type="range" id="artic" min="0" max="100" value="6" />
+    </div>
+    <div class="control">
+      <label>Tempo <span class="val" id="tempo-val">126 bpm</span></label>
+      <input type="range" id="tempo" min="60" max="200" value="126" />
+    </div>
+    <div class="control" style="flex:0 0 auto">
+      <button class="bigplay" id="dotlab-play">▶ Play the figure</button>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ===================== COLOR = HARMONY ===================== -->
+<section class="wrap lab" id="lab-thirds">
+  <div class="lab-head reveal">
+    <p class="section-num">03 — Color and light</p>
+    <h2>A major third is a color. So is a minor third.</h2>
+    <p class="muted" id="thirds-idea"></p>
+    <blockquote class="cited" id="thirds-quote"></blockquote>
+  </div>
+  <div class="thirds reveal d1">
+    <div class="swatch-stack" id="swatch-stack" data-mode="major">
+      <div class="swatch major">major third — “warm”</div>
+      <div class="swatch minor">minor third — “its foil”</div>
+    </div>
+    <div>
+      <div class="third-keys">
+        <button class="keybtn" id="key-major" aria-pressed="false">
+          <span class="nn" id="nn-major">B</span><span class="lbl">Major third</span>
+        </button>
+        <button class="keybtn" id="key-minor" aria-pressed="false">
+          <span class="nn" id="nn-minor">B♭</span><span class="lbl">Minor third</span>
+        </button>
+        <button class="keybtn" id="key-both" aria-pressed="false">
+          <span class="nn">both</span><span class="lbl">Juxtaposed</span>
+        </button>
+      </div>
+      <div class="thirds-verdict" id="thirds-verdict">Play a third over the root.</div>
+      <p class="faint" style="font-size:0.85rem;margin-top:6px">
+        Root G in the bass throughout. "Both" sounds the major and minor third together — the
+        unsettled, poignant chord Sondheim compared to two adjacent colors.
+      </p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ===================== PUTTING IT TOGETHER ===================== -->
+<section class="wrap lab" id="lab-layers">
+  <div class="lab-head reveal">
+    <p class="section-num">04 — Bit by bit</p>
+    <h2>Putting it together</h2>
+    <p class="muted">
+      "Art isn't easy." Build the number the way George builds the canvas — one element at a time.
+      Switch layers on and press play; each one is a different brushstroke in the texture.
+    </p>
+  </div>
+  <div class="layerlab reveal d1" id="layerlab"></div>
+  <div class="transport reveal d1">
+    <button class="bigplay" id="layers-play">▶ Play the assembly</button>
+    <span class="muted" id="layers-count">0 layers</span>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ===================== LYRIC AS POINTILLISM ===================== -->
+<section class="wrap lab" id="lab-lyric">
+  <div class="lab-head reveal">
+    <p class="section-num">05 — The lyric as paint</p>
+    <h2>Words laid down like dots</h2>
+    <p class="muted">
+      The title song barely describes a scene. It mostly <em class="term">names colors</em> — the same handful,
+      reshuffled. Hover a color and watch it land on the canvas. The lyric isn't about the painting; it
+      <em class="term">is</em> the painting.
+    </p>
+  </div>
+  <div class="colorlyric reveal d1">
+    <div>
+      <p class="lyric-words" id="lyric-words"></p>
+      <p class="lyric-cap" id="lyric-cap"></p>
+    </div>
+    <div class="lyric-canvaswrap">
+      <canvas id="lyric-canvas" aria-hidden="true"></canvas>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ===================== SUNDAY CHORALE ===================== -->
+<section class="wrap lab" id="lab-chorale">
+  <div class="lab-head reveal" style="text-align:center;margin-inline:auto">
+    <p class="section-num">06 — The finale</p>
+    <h2>“Sunday”</h2>
+    <p class="muted" style="margin-inline:auto">
+      The figures stop quarrelling. George raises a hand. The chatter resolves into a slow, rising chorale,
+      and the painting comes whole. This is an evocation of that build — the canvas filling with light.
+    </p>
+  </div>
+  <div class="chorale-stage reveal d1">
+    <div class="chorale-word" id="chorale-word">Sunday</div>
+    <div class="chorale-sub" id="chorale-sub">Press to let the company gather.</div>
+    <div style="margin-top:30px">
+      <button class="bigplay" id="chorale-play">▶ Bring the painting whole</button>
+    </div>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ===================== SONG LIST ===================== -->
+<section class="wrap" id="songs">
+  <p class="section-num reveal">07 — The whole canvas</p>
+  <h2 class="reveal">Every number</h2>
+  <div class="songlist reveal d1" id="songlist" style="margin-top:24px"></div>
+</section>
+
+<hr class="divider" />
+
+<!-- ===================== PULL QUOTE ===================== -->
+<section class="wrap">
+  <div class="pullquote reveal">
+    <q id="pq-text"></q>
+    <span class="src" id="pq-src"></span>
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- ===================== NEXT ===================== -->
+<section class="wrap">
+  <p class="section-num reveal">Keep exploring</p>
+  <h2 class="reveal">The rest of the gallery</h2>
+  <p class="muted reveal">Each show gets its own world. Sunday is the first room open; the next is built around the leitmotif that stalks <em class="term">Sweeney Todd</em>.</p>
+  <div class="nextshows reveal d1">
+    <a class="chip active" href="../index.html">← Back to the lobby</a>
+    <span class="chip" aria-disabled="true">Sweeney Todd · coming</span>
+    <span class="chip" aria-disabled="true">Company · coming</span>
+    <span class="chip" aria-disabled="true">A Little Night Music · coming</span>
+    <span class="chip" aria-disabled="true">Into the Woods · coming</span>
+    <span class="chip" aria-disabled="true">Assassins · coming</span>
+    <span class="chip" aria-disabled="true">Merrily We Roll Along · coming</span>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-foot">
+  <span>Explore Sondheim — a study in two lenses. All audio is synthesized in your browser as an evocation, not a recording.</span>
+  <span>Built with care for the work of Stephen Sondheim (1930–2021).</span>
+</footer>
+
+<!-- Tone.js (audio) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+<!-- App scripts (classic, ordered — runs from file:// with no server) -->
+<script src="../js/audio-engine.js"></script>
+<script src="../data/sunday.js"></script>
+<script src="../js/sunday.js"></script>
+</body>
+</html>

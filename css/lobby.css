@@ -1,0 +1,148 @@
+/* ============================================================
+   EXPLORE SONDHEIM — lobby.css
+   Cinematic, photography-led identity for the entrance.
+   Black-and-white, film grain, lower-third title cards.
+   Overrides base tokens within body.cine.
+   ============================================================ */
+
+body.cine {
+  --bg:        #0a0a0b;
+  --bg-soft:   #121214;
+  --ink:       #ece7df;        /* bone */
+  --ink-soft:  #a7a39b;
+  --ink-faint: #66635d;
+  --line:      rgba(236, 231, 223, 0.14);
+  --accent:    #c9a24a;        /* used sparingly */
+  --serif: "Fraunces", Georgia, serif;
+  --sans:  "Inter", system-ui, sans-serif;
+  background: var(--bg);
+}
+
+/* ---------- Film grain over everything ---------- */
+.grain {
+  position: fixed; inset: -50%; z-index: 90; pointer-events: none;
+  width: 200%; height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.05; mix-blend-mode: overlay;
+  animation: grainshift 0.6s steps(2) infinite;
+}
+@keyframes grainshift {
+  0% { transform: translate(0,0); } 50% { transform: translate(-3%, 2%); } 100% { transform: translate(2%,-2%); }
+}
+@media (prefers-reduced-motion: reduce) { .grain { animation: none; } }
+
+/* ---------- Type ---------- */
+body.cine h1, body.cine h2, body.cine h3, body.cine .display {
+  font-family: var(--serif); font-weight: 350; letter-spacing: -0.015em;
+  font-optical-sizing: auto;
+}
+.kicker {
+  font-family: var(--sans); font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.42em; text-transform: uppercase; color: var(--ink-soft);
+}
+
+/* ---------- Cinematic hero (split: copy | portrait, face kept clear) ---------- */
+.reel { position: relative; min-height: 100svh; display: grid; grid-template-columns: 1.05fr 1fr; background: #000; }
+@media (max-width: 860px){ .reel { grid-template-columns: 1fr; grid-template-rows: 60svh auto; } }
+
+.reel-copy {
+  position: relative; z-index: 3; display: flex; flex-direction: column; justify-content: center;
+  padding: clamp(44px, 6vw, 100px) clamp(24px, 5vw, 72px);
+  background: #0a0a0b;
+}
+.reel-copy .kicker { margin-bottom: 18px; }
+.reel-title {
+  font-size: clamp(2.7rem, 6vw, 6.2rem); line-height: 0.92; margin: 0;
+  font-weight: 300; letter-spacing: -0.03em;
+}
+.reel-title em { font-style: italic; font-weight: 340; }
+.reel-sub { max-width: 44ch; margin-top: 24px; color: var(--ink); font-size: clamp(1.02rem,1.35vw,1.28rem); line-height: 1.52; }
+.reel-scrollcue { margin-top: 42px; font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ink-soft); }
+
+.reel-photo { position: relative; margin: 0; overflow: hidden; background: #000; min-height: 60svh; }
+.reel-photo img {
+  width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%;
+  filter: grayscale(1) contrast(1.07) brightness(0.97);
+}
+/* blend the seam toward the copy panel + a soft floor; never crosses the face */
+.reel-photo .seam {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(10,10,11,0.96) 0%, rgba(10,10,11,0) 15%),
+    linear-gradient(to bottom, transparent 70%, rgba(10,10,11,0.55));
+}
+@media (max-width: 860px){
+  .reel-photo .seam { background: linear-gradient(to bottom, transparent 55%, rgba(10,10,11,0.9)); }
+}
+
+/* film frame ticks around the portrait */
+.frame-ticks { position: absolute; inset: 18px; z-index: 4; pointer-events: none; }
+.frame-ticks span { position: absolute; width: 16px; height: 16px; border: 1px solid rgba(236,231,223,0.55); }
+.frame-ticks span:nth-child(1){ top: 0; left: 0; border-right:0; border-bottom:0; }
+.frame-ticks span:nth-child(2){ top: 0; right: 0; border-left:0; border-bottom:0; }
+.frame-ticks span:nth-child(3){ bottom: 0; left: 0; border-right:0; border-top:0; }
+.frame-ticks span:nth-child(4){ bottom: 0; right: 0; border-left:0; border-top:0; }
+
+.credit-micro {
+  position: absolute; z-index: 4; bottom: 24px; left: 24px;
+  font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.08em; color: rgba(236,231,223,0.5);
+}
+
+/* ---------- Sections ---------- */
+body.cine section { padding-block: clamp(70px, 13vh, 160px); }
+.statement { font-family: var(--serif); font-weight: 300; font-size: clamp(1.6rem, 3.4vw, 3rem); line-height: 1.22; max-width: 22ch; }
+.statement em { font-style: italic; color: var(--accent); }
+.lede { max-width: 56ch; color: var(--ink-soft); font-size: clamp(1.02rem,1.5vw,1.2rem); }
+
+/* "The man" split */
+.man { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(30px,5vw,80px); align-items: center; }
+@media (max-width: 820px){ .man { grid-template-columns: 1fr; } }
+.man-photo { position: relative; }
+.man-photo img {
+  width: 100%; filter: grayscale(1) contrast(1.06) brightness(0.95);
+  border: 1px solid var(--line);
+}
+.man-photo figcaption { margin-top: 10px; font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.06em; color: var(--ink-faint); }
+.man h2 { font-size: clamp(1.9rem,3.4vw,3rem); }
+.man .dates { font-family: var(--sans); letter-spacing: 0.3em; font-size: 0.72rem; text-transform: uppercase; color: var(--accent); }
+
+/* ---------- Cinematic gallery index ---------- */
+.now-showing { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px; border-bottom: 1px solid var(--line); padding-bottom: 18px; margin-bottom: 8px; }
+.now-showing h2 { font-size: clamp(1.6rem,3vw,2.4rem); margin: 0; }
+.now-showing .count { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--ink-faint); }
+
+.film-row {
+  position: relative; display: grid; grid-template-columns: 56px 1fr auto;
+  gap: clamp(14px, 3vw, 40px); align-items: center;
+  padding: clamp(20px, 3vw, 34px) 4px; border-bottom: 1px solid var(--line);
+  text-decoration: none; color: var(--ink);
+  transition: padding-left 0.5s var(--ease), background 0.5s var(--ease);
+  overflow: hidden;
+}
+.film-row .frame-no { font-family: var(--sans); font-size: 0.8rem; color: var(--ink-faint); letter-spacing: 0.1em; }
+.film-row .ftitle { font-family: var(--serif); font-weight: 350; font-size: clamp(1.5rem, 3.6vw, 3rem); line-height: 1.02; transition: transform 0.5s var(--ease); }
+.film-row .fsig { display: block; font-family: var(--sans); font-size: 0.92rem; color: var(--ink-soft); max-width: 60ch; margin-top: 8px; }
+.film-row .fstatus { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-faint); white-space: nowrap; }
+.film-row::after { content:""; position:absolute; left:0; top:0; bottom:0; width: 0; background: var(--c); transition: width 0.5s var(--ease); }
+
+.film-row.live { cursor: pointer; }
+.film-row.live:hover { padding-left: 22px; background: linear-gradient(90deg, color-mix(in srgb, var(--c) 12%, transparent), transparent 60%); }
+.film-row.live:hover::after { width: 4px; }
+.film-row.live:hover .ftitle { transform: translateX(4px); }
+.film-row.live .fstatus { color: var(--c); }
+.film-row.live .frame-no { color: var(--c); }
+.film-row.soon { opacity: 0.62; }
+@media (max-width: 680px){
+  .film-row { grid-template-columns: 38px 1fr; }
+  .film-row .fstatus { grid-column: 2; }
+}
+
+/* connections strip */
+.threadline { border: 1px solid var(--line); border-radius: 4px; padding: clamp(26px,4vw,46px); margin-top: 40px; background: linear-gradient(120deg, rgba(201,162,74,0.05), transparent); }
+.threadline .kicker { color: var(--accent); }
+
+/* footer colophon */
+.colophon { padding: 56px var(--gutter); border-top: 1px solid var(--line); display: grid; gap: 18px; }
+.colophon .row { display: flex; flex-wrap: wrap; gap: 10px 26px; justify-content: space-between; font-family: var(--sans); font-size: 0.78rem; color: var(--ink-faint); }
+.colophon a { color: var(--ink-soft); text-decoration: none; }
+.colophon .credits { font-size: 0.7rem; color: var(--ink-faint); max-width: 70ch; line-height: 1.6; }
