@@ -55,6 +55,8 @@ h1, h2, h3, .display {
   letter-spacing: -0.01em;
   margin: 0 0 0.4em;
 }
+h1, h2, h3, p, .lead, .display { overflow-wrap: break-word; }
+@media (max-width: 640px) { :root { --gutter: 18px; } }
 .display { font-size: clamp(3rem, 9vw, 8rem); }
 h1 { font-size: clamp(2.4rem, 6vw, 5rem); }
 h2 { font-size: clamp(1.9rem, 4vw, 3.2rem); }

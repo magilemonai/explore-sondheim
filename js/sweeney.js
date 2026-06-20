@@ -23,11 +23,13 @@
     buildCell();
     buildTrace();
     buildInversion();
+    buildPriest();
   }
 
   /* ---------------- copy ---------------- */
   function injectCopy() {
     if (D.lenses) { setText("#lens-music", D.lenses.music); setText("#lens-lyric", D.lenses.lyric); }
+    if (D.littlePriest) { setText("#priest-idea", D.littlePriest.idea); setText("#priest-engine", D.littlePriest.engine); }
     if (D.diesIrae) {
       setText("#cell-name", D.diesIrae.name);
       setText("#cell-source", D.diesIrae.source);
@@ -260,6 +262,54 @@
       playMotif(notes, { voice: invertState.up ? "choir" : "bell", bpm: invertState.up ? 56 : 76, bass: invertState.up ? "E2" : null, vel: 0.55, canvas: $("#invert-canvas") });
     });
   }
+
+  /* ================= A Little Priest — the pun engine ================= */
+  function buildPriest() {
+    const lp = D.littlePriest, fare = $("#fare"); if (!lp || !fare) return;
+    lp.trades.forEach((t) => {
+      const b = document.createElement("button");
+      b.className = "fare-item"; b.type = "button";
+      b.innerHTML = '<span class="tname">' + esc(t.trade) + '</span><span class="leaddots"></span><span class="taste">tap to taste</span>';
+      b.addEventListener("click", () => {
+        $$(".fare-item", fare).forEach((x) => x.classList.remove("active"));
+        b.classList.add("active");
+        showCouplet(t);
+        playWaltz();
+      });
+      fare.appendChild(b);
+    });
+    function showCouplet(t) {
+      const el = $("#couplet"); if (!el) return;
+      el.innerHTML =
+        '<p class="lines">' + esc(t.line1) + "<br>" + esc(t.line2) + "</p>" +
+        '<p class="anat"><span>Pun: <b>' + esc(t.pun) + "</b></span><span>Rhyme: <b>" + esc(t.rhyme) + "</b></span></p>" +
+        '<p class="waltztag">in a genteel 3/4 — an evocation of the waltz meter, not the tune</p>';
+    }
+  }
+
+  // genteel oom-pah-pah waltz (cancelable, shares the playback timers)
+  function playWaltz() {
+    ensureSound().then((ok) => {
+      if (!ok) return;
+      stopAll();
+      const bpm = 168, beat = 60 / bpm;
+      const prog = [
+        { bass: "D2", ch: ["D4", "F#4", "A4"] },
+        { bass: "A1", ch: ["E4", "A4", "C#5"] },
+        { bass: "D2", ch: ["D4", "F#4", "A4"] },
+        { bass: "A1", ch: ["C#4", "E4", "A4"] },
+      ];
+      let t = 0;
+      prog.forEach((bar) => {
+        schedAt(() => A.bassNote(bar.bass, beat * 0.9, undefined, 0.5), t);
+        schedAt(() => A.chord(bar.ch, beat * 0.66, undefined, 0.26), t + beat);
+        schedAt(() => A.chord(bar.ch, beat * 0.66, undefined, 0.24), t + 2 * beat);
+        t += 3 * beat;
+      });
+    });
+  }
+  function schedAt(fn, sec) { pending.push(setTimeout(() => { if (A && A.started) fn(); }, sec * 1000)); }
+  function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
 
   /* ================= note helpers ================= */
   const SHARP = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"];

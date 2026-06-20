@@ -143,6 +143,39 @@ body[data-show="sweeney"] section { padding-block: 0; }
 .sw-next a:hover { border-color: var(--blood); color: var(--ink); }
 .sw-next span[aria-disabled] { opacity: 0.5; }
 
+/* ---------- A Little Priest · bill of fare ---------- */
+.fare-wrap { border: 1px solid var(--line); background: rgba(130,139,149,0.04); }
+.fare { display: grid; grid-template-columns: 1fr 1fr; }
+@media (max-width: 640px){ .fare { grid-template-columns: 1fr; } }
+.fare-item { display: flex; align-items: baseline; gap: 8px; width: 100%; text-align: left;
+  background: transparent; color: var(--ink); border: 0; border-bottom: 1px solid var(--line);
+  padding: 15px 20px; cursor: pointer; font-family: var(--display); font-size: 1.04rem; transition: background 0.3s, color 0.3s; }
+.fare-item:nth-child(odd) { border-right: 1px solid var(--line); }
+@media (max-width: 640px){ .fare-item:nth-child(odd) { border-right: 0; } }
+.fare-item .leaddots { flex: 1; border-bottom: 1px dotted var(--rule); transform: translateY(-5px); margin: 0 4px; min-width: 24px; }
+.fare-item .taste { font-family: var(--sans); font-size: 0.64rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--steel); white-space: nowrap; }
+.fare-item:hover, .fare-item.active { background: color-mix(in srgb, var(--blood) 14%, transparent); color: #fff; }
+.fare-item:hover .taste, .fare-item.active .taste { color: var(--blood); }
+
+.couplet { border-top: 1px solid var(--rule); padding: 26px 22px; min-height: 128px; }
+.couplet-empty { font-family: var(--press); font-style: italic; color: var(--ink-soft); }
+.couplet .lines { font-family: var(--press); font-style: italic; font-size: clamp(1.3rem, 2.7vw, 1.95rem); line-height: 1.42; color: var(--ink); margin: 0; }
+.couplet .anat { font-family: var(--sans); font-size: 0.78rem; color: var(--ink-soft); margin: 16px 0 0; display: flex; flex-wrap: wrap; gap: 6px 24px; }
+.couplet .anat b { color: var(--steel-lt); font-weight: 600; }
+.couplet .waltztag { font-family: var(--sans); font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--steel); margin: 8px 0 0; }
+
+/* ---------- mobile ---------- */
+@media (max-width: 600px) {
+  .masthead { padding-top: 78px; }
+  .sw-title { font-size: clamp(2rem, 10.5vw, 3.1rem); }
+  .sw-deck { font-size: clamp(1rem, 5vw, 1.4rem); }
+  .sw-sub { max-width: 100%; }
+  .ledger .sighting { grid-template-columns: 1.8rem 1fr; row-gap: 4px; }
+  .sighting .k { grid-column: 2; justify-self: start; }
+  .headline { font-size: clamp(1.7rem, 7vw, 2.6rem); }
+  .lede.drop::first-letter { font-size: 2.8em; }
+}
+
 /* footer */
 body[data-show="sweeney"] .site-foot { font-family: var(--sans); border-top: 1px solid var(--line); }
 

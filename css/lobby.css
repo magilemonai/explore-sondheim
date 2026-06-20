@@ -146,3 +146,18 @@ body.cine section { padding-block: clamp(70px, 13vh, 160px); }
 .colophon .row { display: flex; flex-wrap: wrap; gap: 10px 26px; justify-content: space-between; font-family: var(--sans); font-size: 0.78rem; color: var(--ink-faint); }
 .colophon a { color: var(--ink-soft); text-decoration: none; }
 .colophon .credits { font-size: 0.7rem; color: var(--ink-faint); max-width: 70ch; line-height: 1.6; }
+
+/* ---------- mobile ---------- */
+@media (max-width: 860px) {
+  .reel-copy { padding: 92px 22px 40px; }
+  .reel-sub { max-width: 100%; }
+}
+@media (max-width: 600px) {
+  .reel-title { font-size: clamp(2.2rem, 11vw, 3.3rem); }
+  .reel-copy { padding: 84px 20px 34px; }
+  .reel-scrollcue { margin-top: 28px; }
+  .statement { max-width: 100%; font-size: clamp(1.5rem, 6.4vw, 2.1rem); }
+  .lede { max-width: 100%; }
+  .man { gap: 26px; }
+  .film-row .fsig { max-width: 100%; }
+}

@@ -83,7 +83,26 @@
       },
     ],
 
-    /* Lyrical lens to build next: "A Little Priest" (the patter waltz) — pending score. */
-    lyricalToCome: ["A Little Priest (waltz patter)", "Pretty Women", "Not While I'm Around"],
+    /* "A LITTLE PRIEST" — the lyrical-lens room. The interactive teaches the
+       PUN ENGINE. The couplets below are NEWLY WRITTEN to demonstrate the device
+       (trade → culinary pun → internal rhyme → genteel manners) — they are NOT
+       Sondheim's lyrics, which are not reproduced anywhere on the site. */
+    littlePriest: {
+      title: "A Little Priest",
+      meter: "Waltz · 3/4",
+      idea:
+        "The Act 1 finale turns cannibalism into a parlour game. Mrs. Lovett and Todd price out all of London by trade, matching each man to how he would taste — every pairing a pun, rhymed at a sprint, the whole grisly business carried on a genteel waltz. The horror is in three-quarter time.",
+      engine:
+        "Every joke is built the same way: take a trade, find the pun that fits its character, land a rhyme, and never drop the manners. Tap a customer to watch the engine run. (These couplets are written fresh to show the mechanism — the show's own lyrics are not reproduced.)",
+      trades: [
+        { trade: "The Lawyer",      line1: "So smooth he fairly slides down the throat —", line2: "a slippery customer; savour the gloat.", pun: "slippery customer", rhyme: "throat / gloat" },
+        { trade: "The Poet",        line1: "All airy and light, if a trifle unread —",     line2: "he melts on the tongue like the lines in his head.", pun: "airy and light", rhyme: "unread / head" },
+        { trade: "The Politician",  line1: "Two-faced, naturally, so you get double the meat —", line2: "and gamey enough that he'll never taste sweet.", pun: "two-faced → double the meat", rhyme: "meat / sweet" },
+        { trade: "The Critic",      line1: "Bitter to start, with a long, sour finish —",  line2: "the portion is meagre, the bile won't diminish.", pun: "bitter… sour", rhyme: "finish / diminish" },
+        { trade: "The Banker",      line1: "Fat, and he flaunts it — a rich, heavy cut —", line2: "spreads lovely on toast, sits like brick in the gut.", pun: "rich / fat cut", rhyme: "cut / gut" },
+        { trade: "The Actor",       line1: "Hammy and ripe, and he won't drop the pose —", line2: "overdone, obviously, clear down to the toes.", pun: "hammy / overdone", rhyme: "pose / toes" },
+        { trade: "The Vicar",       line1: "Lean from the fasting, a whisper of holy —",   line2: "goes down with a blessing; digests rather slowly.", pun: "holy / a blessing", rhyme: "holy / slowly" },
+      ],
+    },
   };
 })();
