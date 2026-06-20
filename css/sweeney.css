@@ -1,0 +1,152 @@
+/* ============================================================
+   EXPLORE SONDHEIM — sweeney.css
+   "Sweeney Todd" as a Victorian penny-dreadful broadsheet:
+   steel & blood, letterpress type, newspaper rules, a razor's edge.
+   Deliberately NOT the shared museum shell — its own printed world.
+   ============================================================ */
+
+body[data-show="sweeney"] {
+  --bg:        #0b0c0e;
+  --ink:       #e9e4d8;        /* aged bone ink */
+  --ink-soft:  #a6a298;
+  --ink-faint: #5f5d56;
+  --line:      rgba(233, 228, 216, 0.16);
+  --rule:      rgba(233, 228, 216, 0.34);
+  --blood:     #a81d18;
+  --steel:     #828b95;
+  --steel-lt:  #cdd3da;
+
+  --display: "Cinzel", Georgia, serif;       /* engraved caps */
+  --press:   "IM Fell English", Georgia, serif; /* letterpress prose */
+  --sans:    "Inter", system-ui, sans-serif;
+
+  background: #0b0c0e;
+  color: var(--ink);
+  font-family: var(--press);
+  font-size: 18px;
+}
+body[data-show="sweeney"] p { font-family: var(--press); max-width: 38em; }
+body[data-show="sweeney"] ::selection { background: var(--blood); color: #fff; }
+
+/* ink/print grain over everything */
+.sw-grain { position: fixed; inset: -40%; width: 180%; height: 180%; z-index: 90; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.045; mix-blend-mode: overlay; }
+
+/* ---------- top bar ---------- */
+body[data-show="sweeney"] .topbar { mix-blend-mode: normal; }
+body[data-show="sweeney"] .brand { font-family: var(--display); letter-spacing: 0.06em; }
+body[data-show="sweeney"] .topbar.scrolled { background: rgba(11,12,14,0.9); border-bottom: 1px solid var(--line); }
+
+/* ---------- printed rules ---------- */
+.rule { border: 0; border-top: 1px solid var(--rule); margin: 0; }
+.rule-double { height: 5px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin: 6px 0; }
+/* razor-edge divider with a travelling glint */
+.razor { position: relative; height: 2px; margin: 0; border: 0; overflow: visible;
+  background: linear-gradient(90deg, transparent, var(--steel) 12%, var(--steel-lt) 50%, var(--steel) 88%, transparent); }
+.razor::after { content: ""; position: absolute; top: -1px; left: 0; width: 16%; height: 4px;
+  background: linear-gradient(90deg, transparent, #fff, transparent); filter: blur(1px);
+  animation: glint 6s linear infinite; }
+@keyframes glint { 0% { left: -16%; } 60%,100% { left: 116%; } }
+@media (prefers-reduced-motion: reduce){ .razor::after { animation: none; opacity: 0.4; } }
+
+/* ---------- masthead ---------- */
+.masthead { text-align: center; padding-top: 90px; }
+.edition { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.42em; text-transform: uppercase; color: var(--steel); }
+.edition .b { color: var(--blood); }
+
+/* neutralize the shared shell's section padding — this world sets its own */
+body[data-show="sweeney"] section { padding-block: 0; }
+
+/* ---------- hero ---------- */
+.sw-hero { position: relative; min-height: 100svh; display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+#ash { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.sw-scrim { position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(70% 75% at 50% 42%, transparent 35%, rgba(11,12,14,0.78) 100%),
+              linear-gradient(180deg, rgba(11,12,14,0.65), transparent 28%, rgba(11,12,14,0.92)); }
+.sw-hero .wrap { position: relative; z-index: 2; text-align: center; }
+.sw-title { font-family: var(--display); font-weight: 700; font-size: clamp(2.4rem, 8.4vw, 6.8rem); line-height: 0.92;
+  letter-spacing: 0.04em; margin: 0.14em 0 0; text-transform: uppercase; text-shadow: 0 8px 60px rgba(0,0,0,0.8); }
+.sw-deck { font-family: var(--press); font-style: italic; font-size: clamp(1.1rem, 2.4vw, 1.9rem); color: var(--steel-lt);
+  margin-top: 8px; letter-spacing: 0.02em; }
+.sw-deck .blood { color: var(--blood); font-style: normal; }
+.sw-sub { font-family: var(--press); max-width: 42em; margin: 26px auto 0; color: var(--ink); font-size: clamp(1.05rem,1.5vw,1.3rem); line-height: 1.5; }
+.sw-cta { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: center; margin-top: 34px; }
+.sw-hint { font-family: var(--sans); color: var(--ink-soft); font-size: 0.8rem; }
+.sw-credit { position: absolute; bottom: 18px; left: 0; right: 0; z-index: 2; text-align: center; font-family: var(--sans); font-size: 0.62rem; letter-spacing: 0.1em; color: var(--ink-faint); }
+
+/* razor button */
+.btn-razor { font-family: var(--sans); display: inline-flex; align-items: center; gap: 0.6em;
+  background: linear-gradient(180deg, #dfe4ea, #9aa3ad); color: #14130d; border: none; padding: 14px 28px;
+  border-radius: 2px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.82rem;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.7) inset, 0 16px 34px -16px #000; cursor: pointer;
+  transition: transform var(--med,0.4s) var(--ease, ease), filter 0.3s; }
+.btn-razor:hover { transform: translateY(-2px); filter: brightness(1.08); }
+.btn-ghost-sw { font-family: var(--sans); background: transparent; color: var(--ink); border: 1px solid var(--rule);
+  padding: 13px 22px; border-radius: 2px; letter-spacing: 0.04em; text-transform: uppercase; font-size: 0.78rem; cursor: pointer; transition: border-color 0.3s; }
+.btn-ghost-sw:hover { border-color: var(--blood); }
+
+/* ---------- broadsheet article scaffold ---------- */
+.broadsheet { max-width: 1180px; margin-inline: auto; padding-inline: clamp(20px,5vw,64px); }
+.article { padding-block: clamp(54px, 9vh, 110px); }
+.kicker { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.34em; text-transform: uppercase; color: var(--blood); }
+.headline { font-family: var(--display); font-weight: 600; font-size: clamp(1.9rem, 4.6vw, 3.4rem); line-height: 1.02; margin: 12px 0 8px; }
+.deck { font-family: var(--press); font-style: italic; font-size: clamp(1.1rem,1.8vw,1.45rem); color: var(--steel-lt); max-width: 30em; }
+.lede { font-family: var(--press); color: var(--ink); font-size: 1.08rem; line-height: 1.62; }
+.lede.drop::first-letter { font-family: var(--display); font-weight: 700; float: left; font-size: 3.4em; line-height: 0.74; padding: 6px 12px 0 0; color: var(--blood); }
+.muted { color: var(--ink-soft); }
+.cols2 { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px,4vw,56px); position: relative; }
+.cols2::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: var(--line); }
+@media (max-width: 760px){ .cols2 { grid-template-columns: 1fr; } .cols2::before { display: none; } }
+.colhead { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--steel); border-bottom: 1px solid var(--rule); padding-bottom: 8px; margin-bottom: 14px; }
+
+/* ---------- motif staff (notation display) ---------- */
+.staffwrap { position: relative; border: 1px solid var(--line); background: rgba(130,139,149,0.05); }
+.staff-canvas { width: 100%; display: block; }
+.staff-tag { position: absolute; left: 14px; top: 10px; font-family: var(--sans); font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--steel); }
+.note-names { font-family: var(--sans); font-size: 0.84rem; color: var(--ink-soft); letter-spacing: 0.08em; margin-top: 12px; }
+.note-names b { color: var(--blood); font-weight: 600; }
+
+/* ---------- the cell ---------- */
+.cell-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px,4vw,56px); align-items: center; }
+@media (max-width: 820px){ .cell-grid { grid-template-columns: 1fr; } }
+
+/* ---------- trace: a ledger of sightings ---------- */
+.ledger { border-top: 1px solid var(--rule); margin-top: 22px; }
+.sighting { display: grid; grid-template-columns: 2.2rem 1fr auto; gap: 18px; align-items: center;
+  padding: 18px 6px; border-bottom: 1px solid var(--line); cursor: pointer; transition: background 0.35s, padding-left 0.35s; }
+.sighting:hover, .sighting.active { background: color-mix(in srgb, var(--blood) 10%, transparent); padding-left: 16px; }
+.sighting .no { font-family: var(--display); font-size: 1.1rem; color: var(--blood); }
+.sighting .t { font-family: var(--display); font-weight: 600; font-size: clamp(1.1rem,2vw,1.45rem); }
+.sighting .w { font-family: var(--press); font-style: italic; color: var(--ink-soft); font-size: 0.92rem; display: block; margin-top: 2px; }
+.sighting .k { font-family: var(--sans); font-size: 0.68rem; letter-spacing: 0.12em; color: var(--steel); text-transform: uppercase; white-space: nowrap; }
+.sighting.active .no, .sighting:hover .no { text-shadow: 0 0 14px var(--blood); }
+
+.verdict { margin-top: 26px; display: grid; grid-template-columns: 1fr; gap: 16px; }
+.verdict .rel { font-family: var(--press); color: var(--ink); font-size: 1.05rem; line-height: 1.55; max-width: 52em; }
+.verdict .controls { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+
+/* ---------- inversion ---------- */
+.invert-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(22px,4vw,52px); align-items: center; }
+@media (max-width: 760px){ .invert-grid { grid-template-columns: 1fr; } }
+.flips { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+.flips .on { border-color: var(--blood); color: var(--ink); }
+
+/* ---------- pull quote ---------- */
+.broad-quote { text-align: center; max-width: 22ch; margin: 0 auto; }
+.broad-quote q { font-family: var(--display); font-weight: 600; font-size: clamp(2rem,5vw,3.8rem); line-height: 1.1; }
+.broad-quote .src { display: block; margin-top: 18px; font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.06em; color: var(--ink-faint); }
+
+/* ---------- nav ---------- */
+.sw-next { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.sw-next a, .sw-next span { font-family: var(--sans); font-size: 0.8rem; letter-spacing: 0.06em; border: 1px solid var(--line); padding: 9px 16px; border-radius: 2px; text-decoration: none; color: var(--ink-soft); }
+.sw-next a:hover { border-color: var(--blood); color: var(--ink); }
+.sw-next span[aria-disabled] { opacity: 0.5; }
+
+/* footer */
+body[data-show="sweeney"] .site-foot { font-family: var(--sans); border-top: 1px solid var(--line); }
+
+/* reveal (subtle for this world — ink settling) */
+.ink { opacity: 0; transform: translateY(14px); transition: opacity 1s var(--ease, ease), transform 1s var(--ease, ease); }
+.ink.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce){ .ink { opacity: 1; transform: none; } }

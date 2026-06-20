@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sweeney Todd — Explore Sondheim</title>
+<meta name="description" content="An interactive study of Sondheim's Sweeney Todd: trace the Dies Irae as it stalks the whole score." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=IM+Fell+English:ital@0;1&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/base.css" />
+<link rel="stylesheet" href="../css/sweeney.css" />
+</head>
+<body data-show="sweeney">
+
+<div class="sw-grain" aria-hidden="true"></div>
+
+<header class="topbar" id="topbar">
+  <a class="brand" href="../index.html"><span class="dot"></span> Explore Sondheim</a>
+  <button class="sound-toggle" id="sound-toggle" aria-pressed="false" aria-label="Toggle sound">
+    <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+    <span class="st-label">Sound off</span>
+  </button>
+</header>
+
+<main>
+
+  <!-- ============ HERO (masthead) ============ -->
+  <section class="sw-hero">
+    <canvas id="ash" aria-hidden="true"></canvas>
+    <div class="sw-scrim" aria-hidden="true"></div>
+    <div class="wrap masthead">
+      <p class="edition ink in">Fleet Street &nbsp;·&nbsp; A Musical Thriller &nbsp;·&nbsp; <span class="b">1979</span></p>
+      <div class="rule-double" style="max-width:540px;margin:14px auto"></div>
+      <h1 class="sw-title ink in">Sweeney Todd</h1>
+      <p class="sw-deck ink in">the <span class="blood">Demon Barber</span> of Fleet Street</p>
+      <p class="sw-sub ink in">A thirteenth-century chant of death is buried in the very first bars — then it stalks the whole evening in disguise. Learn the cell; hunt it down.</p>
+      <div class="sw-cta ink in">
+        <button class="btn-razor" id="begin-btn">▶ Begin — hear the chant</button>
+        <span class="sw-hint">sound &amp; motion ahead · headphones recommended</span>
+      </div>
+    </div>
+    <p class="sw-credit">All audio is synthesized in your browser as an evocation — not a recording.</p>
+  </section>
+
+  <hr class="razor" />
+
+  <!-- ============ LENSES ============ -->
+  <div class="broadsheet"><section class="article">
+    <p class="kicker ink">How to listen</p>
+    <h2 class="headline ink">Two ways in</h2>
+    <div class="cols2" style="margin-top:28px">
+      <div class="ink"><p class="colhead">The compositional lens</p><p class="lede" id="lens-music"></p></div>
+      <div class="ink"><p class="colhead">The lyrical lens</p><p class="lede" id="lens-lyric"></p></div>
+    </div>
+  </section></div>
+
+  <hr class="razor" />
+
+  <!-- ============ THE CELL ============ -->
+  <div class="broadsheet"><section class="article">
+    <p class="kicker ink">Exhibit · the source</p>
+    <h2 class="headline ink" id="cell-name">The chant</h2>
+    <p class="deck ink" id="cell-source"></p>
+    <div class="cell-grid" style="margin-top:30px">
+      <div class="staffwrap ink"><span class="staff-tag">Dies Irae · the seed</span><canvas id="cell-canvas" class="staff-canvas"></canvas></div>
+      <div class="ink">
+        <p class="lede" id="cell-desc"></p>
+        <p class="note-names" id="cell-notes"></p>
+        <div style="margin-top:18px"><button class="btn-razor" id="cell-play">▶ Sound the chant</button></div>
+      </div>
+    </div>
+  </section></div>
+
+  <hr class="razor" />
+
+  <!-- ============ TRACE (flagship) ============ -->
+  <div class="broadsheet"><section class="article">
+    <p class="kicker ink">The investigation</p>
+    <h2 class="headline ink">A ledger of sightings</h2>
+    <p class="deck ink">Quoted plainly once — then it hides. Inverted, slowed, harmonized, handed to a new voice. Tap a sighting to hear the same death-cell wearing a fresh disguise, and set it beside the source.</p>
+    <div class="ledger ink" id="ledger"></div>
+    <div class="verdict ink">
+      <div class="staffwrap"><span class="staff-tag" id="trace-tag">Select a sighting</span><canvas id="trace-canvas" class="staff-canvas"></canvas></div>
+      <p class="rel" id="trace-rel">Tap a sighting above to hear how the chant is transformed — then compare it with the source.</p>
+      <div class="controls">
+        <button class="btn-razor" id="trace-play" disabled>▶ Play sighting</button>
+        <button class="btn-ghost-sw" id="trace-source">↺ Hear the source chant</button>
+        <button class="btn-ghost-sw" id="trace-both">⊕ Source, then sighting</button>
+      </div>
+    </div>
+  </section></div>
+
+  <hr class="razor" />
+
+  <!-- ============ INVERSION ============ -->
+  <div class="broadsheet"><section class="article">
+    <p class="kicker ink">Sleight of hand</p>
+    <h2 class="headline ink">Read it in a mirror</h2>
+    <p class="deck ink">Turn the chant upside down and tenderness falls out. When Todd serenades his razors, the death-cell is simply inverted — flipped around its first note.</p>
+    <div class="invert-grid" style="margin-top:28px">
+      <div class="staffwrap ink"><span class="staff-tag" id="invert-tag">Upright — the chant</span><canvas id="invert-canvas" class="staff-canvas"></canvas></div>
+      <div class="ink">
+        <p class="lede" id="invert-desc">The same four pitches, mirrored. The shape that means death, turned over, means love.</p>
+        <p class="note-names" id="invert-notes"></p>
+        <div class="flips">
+          <button class="btn-ghost-sw on" id="inv-up">Upright (the chant)</button>
+          <button class="btn-ghost-sw" id="inv-down">Inverted (“my friends”)</button>
+        </div>
+        <div style="margin-top:14px"><button class="btn-razor" id="invert-play">▶ Play it</button></div>
+      </div>
+    </div>
+  </section></div>
+
+  <hr class="razor" />
+
+  <!-- ============ LYRICAL LENS ============ -->
+  <div class="broadsheet"><section class="article">
+    <p class="kicker ink">The lyrical lens</p>
+    <h2 class="headline ink">Gallows wit, at a sprint</h2>
+    <p class="lede drop ink" style="margin-top:20px">Sondheim's words here are a black comedy of manners. The patter rhymes at full tilt — internal rhymes nested inside internal rhymes — while the subject underneath is revenge, murder, and worse. The horror lands because the wit never once breaks character.</p>
+    <p class="lede muted ink">Its peak is “A Little Priest”: an entire genteel waltz spun from a single ghastly pun, every fresh victim folded politely into the menu. An interactive patter-room for it opens once those bars are transcribed.</p>
+  </section></div>
+
+  <hr class="razor" />
+
+  <!-- ============ PULL QUOTE ============ -->
+  <div class="broadsheet"><section class="article">
+    <div class="broad-quote ink"><q id="pq">Attend the tale of Sweeney Todd.</q><span class="src" id="pq-src">— The Ballad of Sweeney Todd</span></div>
+  </section></div>
+
+  <hr class="razor" />
+
+  <!-- ============ NAV ============ -->
+  <div class="broadsheet"><section class="article">
+    <p class="kicker ink">Keep exploring</p>
+    <h2 class="headline ink">More rooms</h2>
+    <div class="sw-next ink">
+      <a href="../index.html">← The lobby</a>
+      <a href="sunday.html">Sunday in the Park with George →</a>
+      <span aria-disabled="true">Company · coming</span>
+      <span aria-disabled="true">A Little Night Music · coming</span>
+      <span aria-disabled="true">Into the Woods · coming</span>
+      <span aria-disabled="true">Assassins · coming</span>
+      <span aria-disabled="true">Merrily We Roll Along · coming</span>
+    </div>
+  </section></div>
+
+</main>
+
+<footer class="site-foot">
+  <span>Explore Sondheim — Sweeney Todd. Audio synthesized in your browser as an evocation, not a recording.</span>
+  <span>For the work of Stephen Sondheim (1930–2021).</span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+<script src="../js/audio-engine.js"></script>
+<script src="../data/sweeney.js"></script>
+<script src="../js/sweeney.js"></script>
+</body>
+</html>
