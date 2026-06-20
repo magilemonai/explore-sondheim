@@ -229,3 +229,93 @@ body[data-show="sunday"] .topbar.scrolled { background: rgba(13,19,16,0.82); bac
 /* ---------- Next / nav to other shows ---------- */
 .nextshows { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
 .nextshows .chip[aria-disabled="true"] { opacity: 0.5; }
+
+/* ============================================================
+   LIGHT GALLERY — the room opens out of the dark hero into a
+   warm, sunlit exhibition. Tokens are redefined here so the
+   shared components flip to light automatically; the canvas
+   "exhibits" stay as framed dark screens on the bright walls.
+   ============================================================ */
+
+/* dark hero → light wall transition */
+.into-light {
+  position: relative; height: clamp(120px, 22vh, 210px);
+  display: grid; place-items: end center; padding-bottom: 26px;
+  background: linear-gradient(180deg, #0d1310 0%, #2b2c22 42%, #e7e0cf 100%);
+}
+.into-light span {
+  font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.34em;
+  text-transform: uppercase; color: rgba(33,29,23,0.5);
+}
+
+.gallery {
+  /* warm gallery palette — Seurat in daylight */
+  --ink: #211d17;
+  --ink-soft: #6a6253;
+  --ink-faint: #9b917d;
+  --line: rgba(33, 29, 23, 0.16);
+  --bg: #e7e0cf;
+  --bg-soft: #efe9da;
+  --accent: #b3671b;          /* sienna — afternoon sun */
+  --accent-2: #5b7fb4;        /* Seurat water-blue */
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 620px at 86% -6%, rgba(230,199,90,0.20), transparent 60%),
+    radial-gradient(900px 760px at 4% 28%, rgba(111,168,106,0.10), transparent 55%),
+    #e7e0cf;
+}
+
+/* wall-label section headers (catalogue style) */
+.gallery .section-num { color: var(--accent); font-weight: 600; }
+.gallery .section-num::before { content: "● "; font-size: 0.7em; vertical-align: middle; }
+.gallery h2 { color: var(--ink); }
+.gallery .lead, .gallery .muted, .gallery p { color: var(--ink-soft); }
+.gallery .eyebrow { color: var(--accent); }
+.gallery em.term { color: var(--accent); }
+
+/* pointillist dotted rule replaces the plain divider */
+.gallery .divider { height: 8px; background: none; border: 0; }
+.gallery .divider::after {
+  content: ""; display: block; height: 8px;
+  background-image: radial-gradient(circle, var(--ink-faint) 1.4px, transparent 1.7px);
+  background-size: 18px 8px; background-repeat: repeat-x; opacity: 0.55;
+}
+
+/* exhibits: dark framed "screens" on the light wall */
+.gallery .lab-stage,
+.gallery .lyric-canvaswrap {
+  background: #11140e;
+  border: 1px solid rgba(33,29,23,0.22);
+  box-shadow: 0 28px 64px -32px rgba(0,0,0,0.5);
+}
+.gallery .lab-stage { border-radius: 6px; }
+.gallery .swatch-stack { box-shadow: 0 22px 50px -30px rgba(0,0,0,0.4); border-color: rgba(33,29,23,0.2); }
+
+/* lens cards on the wall */
+.gallery .lens { border-left-width: 3px; }
+.gallery .lens .tag { color: var(--ink-faint); }
+
+/* layer "wall list" */
+.gallery .layer-row { background: rgba(255,255,255,0.4); border-color: var(--line); }
+.gallery .layer-row:hover { border-color: var(--accent-2); }
+.gallery .layer-row.on { background: color-mix(in srgb, var(--accent) 12%, rgba(255,255,255,0.4)); }
+
+/* cited quote (AIC) reads as a didactic panel */
+.gallery .cited { color: var(--ink); border-left-color: var(--accent); }
+.gallery .cited cite { color: var(--ink-faint); }
+
+/* keys / thirds verdict */
+.gallery .keybtn { background: rgba(255,255,255,0.45); }
+.gallery .thirds-verdict { color: var(--accent); }
+
+/* chorale on the bright wall */
+.gallery .chorale-sub { color: var(--ink-soft); }
+
+/* song list */
+.gallery .song .t { color: var(--ink); }
+.gallery .song .n { color: var(--ink-soft); }
+
+/* buttons: warm, readable on light */
+.gallery .bigplay { color: #1a1206; }
+.gallery .btn.ghost { color: var(--ink); }
+.gallery .dotlab-readout { color: #e9e3d3; }
