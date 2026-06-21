@@ -1,0 +1,76 @@
+/* ============================================================
+   EXPLORE SONDHEIM — into-the-woods.css
+   "Into the Woods": a storybook forest by lantern-light.
+   Deep green-black, parchment ink, lantern amber, leaf green.
+   ============================================================ */
+body[data-show="woods"] {
+  --bg: #0a110c; --ink: #e9e3d2; --ink-soft: #aab59a; --ink-faint: #5f6b54;
+  --line: rgba(233,227,210,0.14); --accent: #d99a3a; --accent-2: #7fae6a;
+  --display: "Spectral", Georgia, serif; --sans: "Inter", system-ui, sans-serif;
+  background:
+    radial-gradient(70% 50% at 50% -8%, rgba(217,154,58,0.12), transparent 60%),
+    radial-gradient(90% 70% at 50% 110%, rgba(127,174,106,0.12), transparent 60%),
+    linear-gradient(180deg, #0b130d, #070c08);
+  background-attachment: fixed; color: var(--ink); font-family: var(--sans);
+}
+body[data-show="woods"] h1, body[data-show="woods"] h2, body[data-show="woods"] h3 { font-family: var(--display); font-weight: 500; letter-spacing: -0.01em; }
+body[data-show="woods"] section { padding-block: 0; }
+body[data-show="woods"] .topbar.scrolled { background: rgba(10,17,12,0.9); border-bottom: 1px solid var(--line); }
+body[data-show="woods"] .brand { font-family: var(--display); }
+
+.wrapw { max-width: 1100px; margin-inline: auto; padding-inline: clamp(20px,5vw,60px); }
+.kicker { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.34em; text-transform: uppercase; color: var(--accent); }
+.deck { color: var(--ink-soft); max-width: 56ch; }
+.headline { font-size: clamp(1.9rem, 4vw, 3.1rem); margin: 12px 0 8px; }
+.block { padding-block: clamp(56px, 10vh, 120px); }
+.rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(22px,4vw,52px); }
+@media (max-width: 760px){ .cols { grid-template-columns: 1fr; } }
+.colh { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent-2); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 14px; }
+.body { color: var(--ink-soft); line-height: 1.65; }
+
+/* hero */
+.w-hero { position: relative; min-height: 100svh; display: flex; align-items: flex-end; overflow: hidden; padding-bottom: 8vh; }
+#forest { position: absolute; inset: 0; width: 100%; height: 100%; }
+.w-scrim { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(7,12,8,0.55), transparent 35%, rgba(7,12,8,0.92)); }
+.w-hero .wrapw { position: relative; z-index: 2; }
+.w-title { font-size: clamp(2.8rem, 10vw, 8rem); line-height: 0.92; margin: 0.08em 0 0; }
+.w-sub { max-width: 44ch; margin-top: 20px; color: var(--ink); font-size: clamp(1.05rem,1.5vw,1.35rem); line-height: 1.55; }
+.w-italic { font-family: var(--display); font-style: italic; color: var(--accent-2); }
+.w-cta { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-top: 28px; }
+.w-credit { position: absolute; bottom: 14px; left: 0; right: 0; text-align: center; z-index: 2; font-size: 0.62rem; letter-spacing: 0.1em; color: var(--ink-faint); }
+
+.btn-lantern { font-family: var(--sans); display: inline-flex; align-items: center; gap: 0.6em; background: var(--accent); color: #1a1206;
+  border: none; padding: 13px 26px; border-radius: 999px; font-weight: 600; cursor: pointer; transition: transform .3s, box-shadow .3s; }
+.btn-lantern:hover { transform: translateY(-2px); box-shadow: 0 14px 32px -14px var(--accent); }
+.btn-wire { font-family: var(--sans); background: transparent; color: var(--ink); border: 1px solid var(--line); padding: 12px 20px; border-radius: 999px; cursor: pointer; transition: border-color .3s; }
+.btn-wire:hover { border-color: var(--accent); }
+
+/* wishers */
+.glade { border: 1px solid var(--line); border-radius: 16px; padding: clamp(22px,3.5vw,40px); background: linear-gradient(180deg, rgba(127,174,106,0.05), rgba(0,0,0,0.2)); }
+.wishers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 6px 0 22px; }
+@media (max-width: 560px){ .wishers { grid-template-columns: 1fr 1fr; } }
+.wisher { font-family: var(--display); font-size: 1.02rem; border: 1px solid var(--line); background: rgba(255,255,255,0.03); color: var(--ink-soft);
+  padding: 14px 16px; border-radius: 12px; cursor: pointer; text-align: left; transition: all .25s; }
+.wisher:hover { border-color: var(--accent-2); }
+.wisher[aria-pressed="true"] { border-color: var(--accent); color: var(--ink); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.wisher .iw { display: block; font-family: var(--sans); font-size: 0.66rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent-2); margin-top: 4px; opacity: 0; transition: opacity .25s; }
+.wisher[aria-pressed="true"] .iw { opacity: 1; }
+.glade-foot { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.glade-foot .count { font-family: var(--sans); font-size: 0.8rem; color: var(--ink-soft); }
+.glade-foot .count b { color: var(--accent); }
+
+/* quote + nav */
+.w-quote { text-align: center; max-width: 24ch; margin-inline: auto; }
+.w-quote q { font-family: var(--display); font-style: italic; font-size: clamp(1.8rem,4.5vw,3.2rem); line-height: 1.2; }
+.w-quote .src { display: block; margin-top: 14px; font-family: var(--sans); font-size: 0.8rem; color: var(--ink-faint); }
+.nextrooms { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.nextrooms a, .nextrooms span { font-family: var(--sans); font-size: 0.8rem; border: 1px solid var(--line); padding: 9px 15px; border-radius: 999px; text-decoration: none; color: var(--ink-soft); }
+.nextrooms a:hover { border-color: var(--accent); color: var(--ink); }
+.nextrooms span[aria-disabled] { opacity: 0.5; }
+body[data-show="woods"] .site-foot { font-family: var(--sans); border-top: 1px solid var(--line); }
+
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity .9s ease, transform .9s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce){ .reveal { opacity: 1; transform: none; } }
+@media (max-width: 600px){ .w-sub, .deck { max-width: 100%; } }

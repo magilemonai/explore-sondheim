@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Company — Explore Sondheim</title>
+<meta name="description" content="An interactive study of Sondheim's Company: the busy-signal motif and the sound of being surrounded and alone." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/base.css" />
+<link rel="stylesheet" href="../css/company.css" />
+</head>
+<body data-show="company">
+
+<header class="topbar" id="topbar">
+  <a class="brand" href="../index.html"><span class="dot"></span> Explore Sondheim</a>
+  <button class="sound-toggle" id="sound-toggle" aria-pressed="false" aria-label="Toggle sound">
+    <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="st-label">Sound off</span>
+  </button>
+</header>
+
+<main>
+  <section class="co-hero">
+    <canvas id="city" aria-hidden="true"></canvas>
+    <div class="co-scrim" aria-hidden="true"></div>
+    <div class="wrapc">
+      <p class="kicker reveal in">1970 · the first concept musical</p>
+      <h1 class="co-title reveal in">Company<span class="dotred">.</span></h1>
+      <p class="co-sub reveal in">A musical about being alone — together. One bachelor, five married couples, and a score built from the sound a telephone makes when no one can get through.</p>
+      <div class="co-cta reveal in">
+        <button class="btn-sig" id="begin">▶ Begin — pick up the phone</button>
+        <span style="font-size:0.8rem;color:var(--ink-soft)">sound ahead</span>
+      </div>
+    </div>
+    <p class="co-credit">Audio is synthesized in your browser as an evocation — not a recording.</p>
+  </section>
+
+  <hr class="rule" />
+
+  <div class="wrapc"><div class="block">
+    <p class="kicker reveal">How to listen</p>
+    <h2 class="headline reveal">Two ways in</h2>
+    <div class="cols reveal" style="margin-top:24px">
+      <div><p class="colh">The compositional lens</p><p class="body" id="lens-music"></p></div>
+      <div><p class="colh">The lyrical lens</p><p class="body" id="lens-lyric"></p></div>
+    </div>
+  </div></div>
+
+  <hr class="rule" />
+
+  <div class="wrapc"><div class="block">
+    <p class="kicker reveal">The motif · the busy signal</p>
+    <h2 class="headline reveal">Surrounded, and alone</h2>
+    <p class="deck reveal">Company's nervous engine is born from a telephone's busy signal — and from the couples calling Bobby's name over one another. Add callers and listen to the crowd close in.</p>
+    <div class="board reveal" style="margin-top:24px">
+      <p class="colh">Bobby's people — tap to add a caller</p>
+      <div class="callers" id="callers"></div>
+      <div class="board-foot">
+        <button class="btn-sig" id="call">▶ Let it ring</button>
+        <button class="btn-wire" id="hangup">■ Hang up</button>
+        <span class="crowd-meter" id="crowd">0 callers</span>
+      </div>
+    </div>
+  </div></div>
+
+  <hr class="rule" />
+
+  <div class="wrapc"><div class="block">
+    <p class="kicker reveal">The lyrical lens · ambivalence</p>
+    <h2 class="headline reveal">Two feelings, one breath</h2>
+    <p class="deck reveal">Sondheim's people never feel just one thing. “Sorry-Grateful” sits inside the same chord; “Being Alive” finally lets the whole thing open. Press each and hear the difference.</p>
+    <div class="amb reveal">
+      <button class="b-grateful" id="b-grateful">Grateful</button>
+      <button class="b-sorry" id="b-sorry">Sorry</button>
+      <button class="b-alive" id="b-alive">Being Alive</button>
+    </div>
+  </div></div>
+
+  <hr class="rule" />
+
+  <div class="wrapc"><div class="block">
+    <div class="co-quote reveal"><q>A musical about being alone — together.</q><span class="src">Company · 1970</span></div>
+  </div></div>
+
+  <hr class="rule" />
+
+  <div class="wrapc"><div class="block">
+    <p class="kicker reveal">Keep exploring</p>
+    <h2 class="headline reveal">More rooms</h2>
+    <div class="nextrooms reveal">
+      <a href="../index.html">← The lobby</a>
+      <a href="sunday.html">Sunday in the Park with George</a>
+      <a href="sweeney.html">Sweeney Todd</a>
+      <a href="night-music.html">A Little Night Music →</a>
+    </div>
+  </div></div>
+</main>
+
+<footer class="site-foot">
+  <span>Explore Sondheim — Company (v0.1). Audio is an evocation, not a recording.</span>
+  <span>For the work of Stephen Sondheim (1930–2021).</span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+<script src="../js/audio-engine.js"></script>
+<script src="../js/room.js"></script>
+<script src="../data/company.js"></script>
+<script src="../js/company.js"></script>
+</body>
+</html>

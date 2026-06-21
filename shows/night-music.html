@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>A Little Night Music — Explore Sondheim</title>
+<meta name="description" content="An interactive study of Sondheim's A Little Night Music: a whole score written in three." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/base.css" />
+<link rel="stylesheet" href="../css/night-music.css" />
+</head>
+<body data-show="nightmusic">
+
+<header class="topbar" id="topbar">
+  <a class="brand" href="../index.html"><span class="dot"></span> Explore Sondheim</a>
+  <button class="sound-toggle" id="sound-toggle" aria-pressed="false" aria-label="Toggle sound">
+    <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="st-label">Sound off</span>
+  </button>
+</header>
+
+<main>
+  <section class="nm-hero">
+    <canvas id="night" aria-hidden="true"></canvas>
+    <div class="nm-scrim" aria-hidden="true"></div>
+    <div class="wrapn">
+      <p class="kicker reveal in">1973 · a weekend in the country</p>
+      <h1 class="nm-title reveal in">A Little Night Music</h1>
+      <p class="nm-sub reveal in">A summer night of mismatched lovers, where the night smiles three times — and the entire score is written <span class="nm-italic">in three.</span></p>
+      <div class="nm-cta reveal in">
+        <button class="btn-moon" id="begin">▶ Begin — start the waltz</button>
+        <span style="font-size:0.8rem;color:var(--ink-soft)">sound ahead</span>
+      </div>
+    </div>
+    <p class="nm-credit">Audio is an illustrative waltz, synthesized in your browser — not the score.</p>
+  </section>
+
+  <hr class="rule" />
+
+  <div class="wrapn"><div class="block">
+    <p class="kicker reveal">How to listen</p>
+    <h2 class="headline reveal">Two ways in</h2>
+    <div class="cols reveal" style="margin-top:24px">
+      <div><p class="colh">The compositional lens</p><p class="body" id="lens-music"></p></div>
+      <div><p class="colh">The lyrical lens</p><p class="body" id="lens-lyric"></p></div>
+    </div>
+  </div></div>
+
+  <hr class="rule" />
+
+  <div class="wrapn"><div class="block">
+    <p class="kicker reveal">The rule · everything in three</p>
+    <h2 class="headline reveal">One waltz, four meters</h2>
+    <p class="deck reveal">Sondheim wrote the whole show on the bones of the waltz, then varied it — opening the bar of three out into 6/8, 9/8, 12/8. Same lilt, different breadth. Choose a meter and feel where the weight falls.</p>
+    <div class="meterbox reveal" style="margin-top:24px">
+      <div class="beats" id="beats"></div>
+      <div class="meter-btns" id="meter-btns"></div>
+      <p class="meter-desc" id="meter-desc">Pick a meter — every one is still built from groups of three.</p>
+      <div style="margin-top:10px"><button class="btn-wire" id="stop">■ Stop</button></div>
+    </div>
+  </div></div>
+
+  <hr class="rule" />
+
+  <div class="wrapn"><div class="block">
+    <div class="nm-quote reveal"><q>Everything, in three.</q><span class="src">A Little Night Music · 1973</span></div>
+  </div></div>
+
+  <hr class="rule" />
+
+  <div class="wrapn"><div class="block">
+    <p class="kicker reveal">Keep exploring</p>
+    <h2 class="headline reveal">More rooms</h2>
+    <div class="nextrooms reveal">
+      <a href="../index.html">← The lobby</a>
+      <a href="company.html">Company</a>
+      <a href="sweeney.html">Sweeney Todd</a>
+      <a href="into-the-woods.html">Into the Woods →</a>
+    </div>
+  </div></div>
+</main>
+
+<footer class="site-foot">
+  <span>Explore Sondheim — A Little Night Music (v0.1). Audio is an evocation, not a recording.</span>
+  <span>For the work of Stephen Sondheim (1930–2021).</span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+<script src="../js/audio-engine.js"></script>
+<script src="../js/room.js"></script>
+<script src="../data/night-music.js"></script>
+<script src="../js/night-music.js"></script>
+</body>
+</html>

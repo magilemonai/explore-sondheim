@@ -46,6 +46,8 @@ css/base.css             shared shell + design tokens (:root defaults)
 css/lobby.css            lobby world (cinematic, photo-led)
 css/<show>.css           that show's world (scoped via body[data-show="..."])
 js/audio-engine.js       Tone.js wrapper → window.Sondheim.audio
+js/room.js               shared room helpers → window.Sondheim.room
+                         (reveal, topbar, sound, a cancelable player, note utils)
 js/<show>.js             that show's interactions
 data/<show>.js           content + transcribed motif/note data → window.Sondheim.data.<show>
 assets/                  public-domain images only (credit in footer/colophon)
@@ -100,7 +102,12 @@ Push to `main` → GitHub Actions (`.github/workflows/deploy.yml`) builds and pu
 (Pages source = GitHub Actions). No manual step. Commit/push only when Cody asks.
 
 ## Status (roadmap)
-Built: lobby, **Sunday** (full), **Sweeney** (Dies Irae trace + inversion + A Little Priest).
-Next: more rooms (Company's "Bobby"/busy-signal motif is the natural third), then a cross-work
-**Connections** room (motivic transformation, pastiche, "wanting vs. having"). Each new room: get the
-score material from Cody, transcribe, and give the room its own bespoke world.
+All seven rooms exist, each its own bespoke world:
+- **Sunday** & **Sweeney** — full, with motifs **transcribed from the real scores** Cody supplied.
+- **Company, A Little Night Music, Into the Woods, Assassins, Merrily** — **v0.1**: bespoke hero +
+  two-lens intro + one signature interactive each, built on the verified devices with **illustrative,
+  original audio** (clearly labeled, not the scores). They share `js/room.js`.
+
+To deepen a v0.1 room: get its score from Cody, transcribe the real motifs (octaves verified by ear),
+and swap them in for the illustrative audio. Still to come: a cross-work **Connections** room
+(motivic transformation, pastiche, "wanting vs. having"). Keep every room distinct — never the shell.

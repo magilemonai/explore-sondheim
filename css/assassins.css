@@ -1,0 +1,76 @@
+/* ============================================================
+   EXPLORE SONDHEIM — assassins.css
+   "Assassins": a faded American carnival / shooting gallery.
+   Weathered red-white-blue, gunmetal, targets and stars.
+   ============================================================ */
+body[data-show="assassins"] {
+  --bg: #14110c; --ink: #ece3d0; --ink-soft: #a99f88; --ink-faint: #6a6150;
+  --line: rgba(236,227,208,0.15); --accent: #c23b34; --accent-2: #4a6b9a; --cream: #e7d9b6;
+  --display: "Rye", Georgia, serif; --type: "Special Elite", "Courier New", monospace; --sans: "Inter", system-ui, sans-serif;
+  background:
+    radial-gradient(900px 500px at 50% -10%, rgba(194,59,52,0.12), transparent 60%),
+    radial-gradient(700px 500px at 12% 100%, rgba(74,107,154,0.10), transparent 60%),
+    linear-gradient(180deg, #16120d, #100d09);
+  background-attachment: fixed; color: var(--ink); font-family: var(--sans);
+}
+body[data-show="assassins"] h1, body[data-show="assassins"] h2, body[data-show="assassins"] h3 { font-family: var(--display); font-weight: 400; letter-spacing: 0.01em; }
+body[data-show="assassins"] section { padding-block: 0; }
+body[data-show="assassins"] .topbar.scrolled { background: rgba(20,17,12,0.92); border-bottom: 1px solid var(--line); }
+body[data-show="assassins"] .brand { font-family: var(--type); letter-spacing: 0.04em; }
+
+.wrapa { max-width: 1100px; margin-inline: auto; padding-inline: clamp(20px,5vw,60px); }
+.kicker { font-family: var(--type); font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); }
+.deck { color: var(--ink-soft); max-width: 56ch; }
+.headline { font-size: clamp(1.9rem, 4.2vw, 3.2rem); margin: 12px 0 8px; }
+.block { padding-block: clamp(56px, 10vh, 120px); }
+.rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(22px,4vw,52px); }
+@media (max-width: 760px){ .cols { grid-template-columns: 1fr; } }
+.colh { font-family: var(--type); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-2); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 14px; }
+.body { color: var(--ink-soft); line-height: 1.65; }
+
+/* hero */
+.a-hero { position: relative; min-height: 100svh; display: flex; align-items: center; overflow: hidden; }
+#gallery { position: absolute; inset: 0; width: 100%; height: 100%; }
+.a-scrim { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(70% 80% at 50% 45%, transparent 42%, rgba(16,13,9,0.88)); }
+.a-hero .wrapa { position: relative; z-index: 2; text-align: center; }
+.a-title { font-size: clamp(3rem, 13vw, 9rem); line-height: 0.9; margin: 0.06em 0 0; }
+.a-sub { max-width: 46ch; margin: 18px auto 0; color: var(--ink); font-size: clamp(1.05rem,1.5vw,1.3rem); line-height: 1.5; }
+.a-cta { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; justify-content: center; margin-top: 28px; }
+.a-credit { position: absolute; bottom: 16px; left: 0; right: 0; text-align: center; z-index: 2; font-family: var(--type); font-size: 0.66rem; letter-spacing: 0.08em; color: var(--ink-faint); }
+
+.btn-shot { font-family: var(--type); display: inline-flex; align-items: center; gap: 0.6em; background: var(--accent); color: #fff;
+  border: none; padding: 14px 28px; border-radius: 2px; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.85rem; cursor: pointer; transition: transform .3s, box-shadow .3s; }
+.btn-shot:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -14px var(--accent); }
+.btn-wire { font-family: var(--type); background: transparent; color: var(--ink); border: 1px solid var(--line); padding: 13px 20px; border-radius: 2px; letter-spacing: 0.05em; text-transform: uppercase; font-size: 0.78rem; cursor: pointer; transition: border-color .3s; }
+.btn-wire:hover { border-color: var(--accent); }
+
+/* jukebox */
+.jukebox { border: 1px solid var(--line); border-radius: 8px; padding: clamp(20px,3vw,36px); background: linear-gradient(180deg, rgba(231,217,182,0.04), rgba(0,0,0,0.22)); }
+.idioms { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+@media (max-width: 720px){ .idioms { grid-template-columns: 1fr 1fr; } }
+.idiom { border: 1px solid var(--line); background: rgba(255,255,255,0.03); color: var(--ink); padding: 18px 14px; border-radius: 6px; cursor: pointer; text-align: center; transition: all .25s; }
+.idiom:hover { transform: translateY(-3px); border-color: var(--accent); }
+.idiom.active { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 16%, transparent); }
+.idiom .ttl { font-family: var(--display); font-size: 1.02rem; line-height: 1.1; }
+.idiom .target { width: 30px; height: 30px; border-radius: 50%; margin: 0 auto 10px; border: 2px solid var(--accent); position: relative; }
+.idiom .target::after { content: ""; position: absolute; inset: 7px; border-radius: 50%; background: var(--accent); opacity: 0.5; }
+.idiom.active .target::after { opacity: 1; }
+.nowplaying { margin-top: 22px; border-top: 1px solid var(--line); padding-top: 18px; min-height: 4em; }
+.nowplaying .np-name { font-family: var(--display); font-size: 1.3rem; color: var(--cream); }
+.nowplaying .np-desc { color: var(--ink-soft); margin-top: 6px; max-width: 60ch; }
+
+/* quote + nav */
+.a-quote { text-align: center; max-width: 22ch; margin-inline: auto; }
+.a-quote q { font-family: var(--display); font-size: clamp(1.7rem,4.4vw,3rem); line-height: 1.2; }
+.a-quote .src { display: block; margin-top: 14px; font-family: var(--type); font-size: 0.78rem; color: var(--ink-faint); }
+.nextrooms { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.nextrooms a, .nextrooms span { font-family: var(--type); font-size: 0.78rem; letter-spacing: 0.04em; border: 1px solid var(--line); padding: 9px 15px; border-radius: 2px; text-decoration: none; color: var(--ink-soft); }
+.nextrooms a:hover { border-color: var(--accent); color: var(--ink); }
+.nextrooms span[aria-disabled] { opacity: 0.5; }
+body[data-show="assassins"] .site-foot { font-family: var(--type); border-top: 1px solid var(--line); }
+
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity .9s ease, transform .9s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce){ .reveal { opacity: 1; transform: none; } }
+@media (max-width: 600px){ .a-title { font-size: clamp(2.6rem, 16vw, 4rem); } .a-sub, .deck { max-width: 100%; } }

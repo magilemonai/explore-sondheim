@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Assassins — Explore Sondheim</title>
+<meta name="description" content="An interactive study of Sondheim's Assassins: pastiche as argument — the American songbook turned against the dream." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Rye&family=Special+Elite&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="../css/base.css" />
+<link rel="stylesheet" href="../css/assassins.css" />
+</head>
+<body data-show="assassins">
+
+<header class="topbar" id="topbar">
+  <a class="brand" href="../index.html"><span class="dot"></span> Explore Sondheim</a>
+  <button class="sound-toggle" id="sound-toggle" aria-pressed="false" aria-label="Toggle sound">
+    <span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="st-label">Sound off</span>
+  </button>
+</header>
+
+<main>
+  <section class="a-hero">
+    <canvas id="gallery" aria-hidden="true"></canvas>
+    <div class="a-scrim" aria-hidden="true"></div>
+    <div class="wrapa">
+      <p class="kicker reveal in">1990 · step right up</p>
+      <h1 class="a-title reveal in">Assassins</h1>
+      <p class="a-sub reveal in">A carnival shooting gallery of American history — where every grievance is scored in the nation's own popular songbook, turned against the dream.</p>
+      <div class="a-cta reveal in">
+        <button class="btn-shot" id="begin">▶ Step up to the gallery</button>
+      </div>
+    </div>
+    <p class="a-credit">Idiom snippets are original demonstrations, synthesized in your browser — not the show's music.</p>
+  </section>
+
+  <hr class="rule" />
+
+  <div class="wrapa"><div class="block">
+    <p class="kicker reveal">How to listen</p>
+    <h2 class="headline reveal">Two ways in</h2>
+    <div class="cols reveal" style="margin-top:24px">
+      <div><p class="colh">The compositional lens</p><p class="body" id="lens-music"></p></div>
+      <div><p class="colh">The lyrical lens</p><p class="body" id="lens-lyric"></p></div>
+    </div>
+  </div></div>
+
+  <hr class="rule" />
+
+  <div class="wrapa"><div class="block">
+    <p class="kicker reveal">The device · pastiche</p>
+    <h2 class="headline reveal">The American jukebox</h2>
+    <p class="deck reveal">Sondheim scores America with America's own sounds. Pick an idiom and hear a short demonstration of the style — then notice how the comfort of the familiar is exactly the trap.</p>
+    <div class="jukebox reveal" style="margin-top:24px">
+      <div class="idioms" id="idioms"></div>
+      <div class="nowplaying" id="nowplaying"><p class="np-desc">Choose an idiom above to hear it.</p></div>
+    </div>
+  </div></div>
+
+  <hr class="rule" />
+
+  <div class="wrapa"><div class="block">
+    <div class="a-quote reveal"><q>The American songbook, gone wrong.</q><span class="src">Assassins · 1990</span></div>
+  </div></div>
+
+  <hr class="rule" />
+
+  <div class="wrapa"><div class="block">
+    <p class="kicker reveal">Keep exploring</p>
+    <h2 class="headline reveal">More rooms</h2>
+    <div class="nextrooms reveal">
+      <a href="../index.html">← The lobby</a>
+      <a href="into-the-woods.html">Into the Woods</a>
+      <a href="sweeney.html">Sweeney Todd</a>
+      <a href="merrily.html">Merrily We Roll Along →</a>
+    </div>
+  </div></div>
+</main>
+
+<footer class="site-foot">
+  <span>Explore Sondheim — Assassins (v0.1). Idiom snippets are original demonstrations, not the show's music.</span>
+  <span>For the work of Stephen Sondheim (1930–2021).</span>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+<script src="../js/audio-engine.js"></script>
+<script src="../js/room.js"></script>
+<script src="../data/assassins.js"></script>
+<script src="../js/assassins.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+/* ============================================================
+   EXPLORE SONDHEIM — night-music.css
+   "A Little Night Music": a moonlit Swedish summer night.
+   Midnight blue, silver moonlight, champagne. Elegant Roman type.
+   ============================================================ */
+body[data-show="nightmusic"] {
+  --bg: #0a0d1a; --ink: #eef0f7; --ink-soft: #aab0c6; --ink-faint: #606a86;
+  --line: rgba(238,240,247,0.14); --accent: #d8c38a; --accent-2: #8fa6cf;
+  --display: "Marcellus", Georgia, serif; --sans: "Inter", system-ui, sans-serif;
+  background:
+    radial-gradient(60% 50% at 78% 12%, rgba(216,195,138,0.14), transparent 60%),
+    radial-gradient(80% 60% at 20% 90%, rgba(143,166,207,0.12), transparent 60%),
+    linear-gradient(180deg, #0c1124, #080a14);
+  background-attachment: fixed; color: var(--ink); font-family: var(--sans);
+}
+body[data-show="nightmusic"] h1, body[data-show="nightmusic"] h2, body[data-show="nightmusic"] h3 { font-family: var(--display); font-weight: 400; letter-spacing: 0.01em; }
+body[data-show="nightmusic"] section { padding-block: 0; }
+body[data-show="nightmusic"] .topbar.scrolled { background: rgba(10,13,26,0.9); border-bottom: 1px solid var(--line); }
+body[data-show="nightmusic"] .brand { font-family: var(--display); letter-spacing: 0.05em; }
+
+.wrapn { max-width: 1100px; margin-inline: auto; padding-inline: clamp(20px,5vw,60px); }
+.kicker { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--accent); }
+.deck { color: var(--ink-soft); max-width: 54ch; }
+.headline { font-size: clamp(1.9rem, 4vw, 3rem); margin: 12px 0 8px; }
+.block { padding-block: clamp(56px, 10vh, 120px); }
+.rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(22px,4vw,52px); }
+@media (max-width: 760px){ .cols { grid-template-columns: 1fr; } }
+.colh { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent-2); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 14px; }
+.body { color: var(--ink-soft); line-height: 1.65; }
+
+/* hero */
+.nm-hero { position: relative; min-height: 100svh; display: flex; align-items: center; overflow: hidden; }
+#night { position: absolute; inset: 0; width: 100%; height: 100%; }
+.nm-scrim { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(75% 80% at 50% 45%, transparent 45%, rgba(8,10,20,0.85)); }
+.nm-hero .wrapn { position: relative; z-index: 2; }
+.nm-title { font-size: clamp(2.6rem, 8vw, 7rem); line-height: 1.0; margin: 0.1em 0 0; }
+.nm-sub { max-width: 42ch; margin-top: 22px; color: var(--ink); font-size: clamp(1.05rem,1.5vw,1.35rem); line-height: 1.55; }
+.nm-italic { font-family: var(--display); font-style: italic; color: var(--accent-2); }
+.nm-cta { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-top: 30px; }
+.nm-credit { position: absolute; bottom: 16px; left: 0; right: 0; text-align: center; z-index: 2; font-size: 0.62rem; letter-spacing: 0.1em; color: var(--ink-faint); }
+
+.btn-moon { font-family: var(--sans); display: inline-flex; align-items: center; gap: 0.6em; background: var(--accent); color: #1a1608;
+  border: none; padding: 13px 26px; border-radius: 999px; font-weight: 600; letter-spacing: 0.02em; cursor: pointer; transition: transform .3s, box-shadow .3s; }
+.btn-moon:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -14px var(--accent); }
+.btn-wire { font-family: var(--sans); background: transparent; color: var(--ink); border: 1px solid var(--line); padding: 12px 20px; border-radius: 999px; cursor: pointer; transition: border-color .3s; }
+.btn-wire:hover { border-color: var(--accent); }
+
+/* meter playground */
+.meterbox { border: 1px solid var(--line); border-radius: 16px; padding: clamp(22px,3.5vw,40px);
+  background: linear-gradient(180deg, rgba(143,166,207,0.06), rgba(0,0,0,0.18)); text-align: center; }
+.beats { display: flex; gap: 18px; justify-content: center; align-items: center; min-height: 90px; flex-wrap: wrap; }
+.beat { width: 22px; height: 22px; border-radius: 50%; background: rgba(238,240,247,0.18); transition: transform .12s, background .12s, box-shadow .12s; }
+.beat.lit { background: var(--accent-2); transform: scale(1.4); }
+.beat.down { background: var(--accent); box-shadow: 0 0 22px var(--accent); }
+.bargroup { display: inline-flex; gap: 10px; padding: 0 8px; border-right: 1px dashed var(--line); }
+.bargroup:last-child { border-right: 0; }
+.meter-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 22px 0 8px; }
+.meter-btn { font-family: var(--display); font-size: 1.3rem; min-width: 76px; padding: 12px 14px; border-radius: 10px; cursor: pointer;
+  border: 1px solid var(--line); background: rgba(255,255,255,0.03); color: var(--ink); transition: all .25s; }
+.meter-btn[aria-pressed="true"], .meter-btn:hover { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+.meter-desc { color: var(--ink-soft); min-height: 1.5em; margin-top: 10px; font-style: italic; font-family: var(--display); font-size: 1.1rem; }
+
+/* quote + nav */
+.nm-quote { text-align: center; max-width: 22ch; margin-inline: auto; }
+.nm-quote q { font-family: var(--display); font-style: italic; font-size: clamp(1.8rem,4.5vw,3.2rem); line-height: 1.2; }
+.nm-quote .src { display: block; margin-top: 14px; font-family: var(--sans); font-size: 0.8rem; color: var(--ink-faint); }
+.nextrooms { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.nextrooms a, .nextrooms span { font-family: var(--sans); font-size: 0.8rem; border: 1px solid var(--line); padding: 9px 15px; border-radius: 999px; text-decoration: none; color: var(--ink-soft); }
+.nextrooms a:hover { border-color: var(--accent); color: var(--ink); }
+.nextrooms span[aria-disabled] { opacity: 0.5; }
+body[data-show="nightmusic"] .site-foot { font-family: var(--sans); border-top: 1px solid var(--line); }
+
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity .9s ease, transform .9s ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce){ .reveal { opacity: 1; transform: none; } }
+@media (max-width: 600px){ .nm-sub, .deck { max-width: 100%; } }

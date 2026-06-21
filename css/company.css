@@ -1,0 +1,88 @@
+/* ============================================================
+   EXPLORE SONDHEIM — company.css
+   "Company": modern Manhattan at night. Cold charcoal, a single
+   electric signal-coral, switchboard grid, grotesque type.
+   ============================================================ */
+body[data-show="company"] {
+  --bg: #0b0c0f; --ink: #e9ebf0; --ink-soft: #9aa0ad; --ink-faint: #5a606c;
+  --line: rgba(233,235,240,0.12); --accent: #ff5a4d; --accent-2: #45c7c0;
+  --display: "Space Grotesk", system-ui, sans-serif;
+  --sans: "Inter", system-ui, sans-serif;
+  background:
+    radial-gradient(1000px 600px at 80% -10%, rgba(255,90,77,0.10), transparent 60%),
+    linear-gradient(180deg, #0b0c0f, #090a0c);
+  background-attachment: fixed; color: var(--ink); font-family: var(--sans);
+}
+body[data-show="company"] h1, body[data-show="company"] h2, body[data-show="company"] h3 { font-family: var(--display); font-weight: 600; letter-spacing: -0.02em; }
+body[data-show="company"] section { padding-block: 0; }
+body[data-show="company"] .topbar.scrolled { background: rgba(11,12,15,0.9); border-bottom: 1px solid var(--line); }
+body[data-show="company"] .brand { font-family: var(--display); }
+
+.wrapc { max-width: 1120px; margin-inline: auto; padding-inline: clamp(20px,5vw,60px); }
+.kicker { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.34em; text-transform: uppercase; color: var(--accent); }
+.deck { color: var(--ink-soft); max-width: 56ch; }
+
+/* hero */
+.co-hero { position: relative; min-height: 100svh; display: flex; align-items: center; overflow: hidden; }
+#city { position: absolute; inset: 0; width: 100%; height: 100%; }
+.co-scrim { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(70% 80% at 30% 40%, transparent 40%, rgba(9,10,12,0.85)); }
+.co-hero .wrapc { position: relative; z-index: 2; }
+.co-title { font-size: clamp(3rem, 13vw, 10rem); line-height: 0.86; margin: 0.1em 0 0; text-transform: uppercase; }
+.co-title .dotred { color: var(--accent); }
+.co-sub { max-width: 42ch; margin-top: 22px; color: var(--ink); font-size: clamp(1.05rem,1.5vw,1.35rem); line-height: 1.5; }
+.co-cta { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; margin-top: 30px; }
+.co-credit { position: absolute; bottom: 16px; left: 0; right: 0; text-align: center; z-index: 2; font-size: 0.62rem; letter-spacing: 0.1em; color: var(--ink-faint); }
+
+.btn-sig { font-family: var(--sans); display: inline-flex; align-items: center; gap: 0.6em; background: var(--accent); color: #160605;
+  border: none; padding: 13px 26px; border-radius: 3px; font-weight: 600; letter-spacing: 0.02em; cursor: pointer; transition: transform .3s, box-shadow .3s; }
+.btn-sig:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -14px var(--accent); }
+.btn-wire { font-family: var(--sans); background: transparent; color: var(--ink); border: 1px solid var(--line); padding: 12px 20px; border-radius: 3px; cursor: pointer; transition: border-color .3s; }
+.btn-wire:hover { border-color: var(--accent); }
+
+/* article scaffold */
+.block { padding-block: clamp(56px, 10vh, 120px); }
+.rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
+.headline { font-size: clamp(1.8rem, 4vw, 3rem); margin: 12px 0 8px; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(22px,4vw,52px); }
+@media (max-width: 760px){ .cols { grid-template-columns: 1fr; } }
+.colh { font-family: var(--sans); font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent-2); border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 14px; }
+.body { color: var(--ink-soft); line-height: 1.6; }
+
+/* switchboard / callers */
+.board { border: 1px solid var(--line); border-radius: 10px; padding: clamp(20px,3vw,34px);
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.2));
+  background-image: radial-gradient(rgba(233,235,240,0.06) 1px, transparent 1.6px); background-size: 22px 22px; }
+.callers { display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 22px; }
+.caller { font-family: var(--sans); font-size: 0.85rem; border: 1px solid var(--line); background: rgba(255,255,255,0.03); color: var(--ink-soft);
+  padding: 9px 15px; border-radius: 999px; cursor: pointer; transition: all .25s; }
+.caller[aria-pressed="true"] { border-color: var(--accent); color: var(--ink); background: color-mix(in srgb, var(--accent) 16%, transparent); }
+.board-foot { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+.crowd-meter { font-family: var(--sans); font-size: 0.8rem; color: var(--ink-soft); }
+.crowd-meter b { color: var(--accent); }
+
+/* ambivalence */
+.amb { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 18px; }
+.amb button { font-family: var(--display); font-size: 1.05rem; padding: 16px 22px; border-radius: 8px; cursor: pointer; border: 1px solid var(--line); background: rgba(255,255,255,0.03); color: var(--ink); transition: all .25s; }
+.amb button:hover { transform: translateY(-2px); }
+.amb .b-grateful:hover { border-color: var(--accent-2); }
+.amb .b-sorry:hover { border-color: var(--accent); }
+.amb .b-alive { background: var(--accent); color: #160605; border-color: var(--accent); }
+
+/* pull quote + nav */
+.co-quote q { font-family: var(--display); font-weight: 600; font-size: clamp(1.8rem,4.5vw,3.2rem); line-height: 1.15; }
+.co-quote { text-align: center; max-width: 22ch; margin-inline: auto; }
+.co-quote .src { display: block; margin-top: 14px; font-family: var(--sans); font-size: 0.8rem; color: var(--ink-faint); }
+.nextrooms { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.nextrooms a, .nextrooms span { font-family: var(--sans); font-size: 0.8rem; border: 1px solid var(--line); padding: 9px 15px; border-radius: 3px; text-decoration: none; color: var(--ink-soft); }
+.nextrooms a:hover { border-color: var(--accent); color: var(--ink); }
+.nextrooms span[aria-disabled] { opacity: 0.5; }
+body[data-show="company"] .site-foot { font-family: var(--sans); border-top: 1px solid var(--line); }
+
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity .9s var(--ease, ease), transform .9s var(--ease, ease); }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce){ .reveal { opacity: 1; transform: none; } }
+
+@media (max-width: 600px){
+  .co-title { font-size: clamp(2.6rem, 16vw, 4rem); }
+  .co-sub, .deck { max-width: 100%; }
+}
